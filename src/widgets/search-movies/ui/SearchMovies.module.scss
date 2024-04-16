@@ -1,0 +1,31 @@
+@import "src/shared/lib/theme/mixins/text_mixins";
+
+.title{
+  @include title_xl;
+
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+.input{
+  font-family: 'Noto Sans';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #212121;
+
+
+  background: #FFFFFF;
+  border-radius: 8px;
+  &::placeholder{
+    opacity: 0.5;
+  }
+  &[data-error="true"]{
+    color: #212121;
+
+  }
+
+
+}
+.error{
+  @include error_text;
+}

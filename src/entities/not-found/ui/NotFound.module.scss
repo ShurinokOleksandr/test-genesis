@@ -1,0 +1,13 @@
+@import "src/shared/lib/theme/mixins/text_mixins";
+
+.box{
+  align-items: center;
+  justify-content: center;
+  height: 80svh;
+}
+.title{
+
+  @include title_xl;
+
+  text-align: center;
+}
