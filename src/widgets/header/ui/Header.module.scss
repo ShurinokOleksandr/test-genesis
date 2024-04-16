@@ -1,0 +1,28 @@
+
+.wrapper{
+  z-index: 2;
+  width: 100%;
+   .button_reset{
+    background: transparent;
+    border: none;
+  }
+  .button_back{
+    width: 20px ;
+    height: 20px ;
+  }
+  .navigation{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 0;
+   }
+  .progress{
+    height: 4px;
+    background: #fff;
+    box-shadow: 0px 2px 6px 0px #0000000D;
+
+  }
+  .progress_value{
+    background: linear-gradient(270deg, #4AD6BB 0%, #38A58F 100%);
+  }
+}
