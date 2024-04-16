@@ -1,73 +1,49 @@
-import { RadioGroup, Container, Radio, Text, Flex, Box } from '@mantine/core';
+import { stepStore } from 'src/widgets/render-need-component';
+import { Container, Button, Text, Box } from '@mantine/core';
+import { useLocalStorage } from '@mantine/hooks';
+import { observer } from 'mobx-react-lite';
 import { QuizItem } from 'src/entities';
+import { genres } from 'src/shared';
 import { useState } from 'react';
 
 import cls from './Quiz.module.scss';
 
-const genres = [
-    {
-        name:'Drama',
-        icon:'🎭',
-    },
-    {
-        name:'Comedy',
-        icon:'🤹',
-    },
-    {
-        name:'Action',
-        icon:'🥷',
-    },
-    {
-        name:'Thriller',
-        icon:'🧟',
-    },
-    {
-        name:'Science fiction',
-        icon:'👨‍🔬',
-    },
-];
-export const Quiz = () => {
+export const Quiz = observer( ( ) => {
     const [checkedGenre,setCheckedGenre] = useState('');
+    const [, setLocalStoreGenre] = useLocalStorage({
+        defaultValue: '',
+        key: 'genre',
+    });
+    const moveNextStep = () => {
+        stepStore.nextStep();
+        setLocalStoreGenre(checkedGenre);
+    };
     return (
-        <Box w='100%' mt={161}>
+        <Box w='100%' mt={80}>
             <Text className={cls.title}>
                 Your favorite movie genre?
             </Text>
-
-            <Container className={cls.quiz_items}  size='responsive'>
-                <RadioGroup required>
-                    {
-                        genres.map(genre =>
-                            <>
-                                <Container onClick={() => setCheckedGenre(genre.name)} className={cls.box}  size='responsive'>
-                                    <Flex>
-                                        <Box component='span' mr={16}>
-                                            {genre.icon}
-                                        </Box>
-                                        <Text className={cls.genre}>
-                                            {genre.name}
-                                        </Text>
-                                    </Flex>
-                                    <Radio value={genre.name} color='#40BCA3' radius='xl' size='xs'>React</Radio>
-                                </Container>
-                            </>
-                            // <QuizItem
-                            //     setCheckedGenre={setCheckedGenre}
-                            //     checkedGenre={checkedGenre}
-                            //     key={g.name}
-                            //     genre={g}
-                            // />
-                        )
-                    }
-
-
-                </RadioGroup>
-
-
-
+            <Container className={cls.quiz_items} size='responsive'  >
+                {
+                    genres.map(genre =>
+                        <QuizItem
+                            setCheckedGenre={setCheckedGenre}
+                            checkedGenre={checkedGenre}
+                            key={genre.name}
+                            genre={genre}
+                        />
+                    )
+                }
             </Container>
-
+            <Button
+                disabled={!checkedGenre}
+                onClick={moveNextStep}
+                variant='green'
+                size='full'
+            >
+                Continue
+            </Button>
         </Box>
     );
-};
+});
 

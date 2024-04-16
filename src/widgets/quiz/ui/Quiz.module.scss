@@ -1,11 +1,8 @@
+@import "src/shared/lib/theme/mixins/text_mixins";
 .title{
-  margin-bottom: 40px;
+ @include title_xl;
 
-  font-family: Noto Sans;
-  font-size: 24px;
-  font-weight: 900;
-  line-height: 30px;
-  color: #212121;
+  margin-bottom: 40px;
 }
 .quiz_items{
   display: flex;
@@ -13,5 +10,10 @@
   gap: 24px;
 
   width: 100%;
+  margin-bottom: 81px;
   padding-inline: 0;
+  .box{
+    display: flex;
+    justify-content: space-between;
+  }
  }

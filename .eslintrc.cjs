@@ -28,6 +28,7 @@ module.exports = {
     'react',
     'validate-jsx-nesting',],
   rules: {
+     '@typescript-eslint/ban-ts-comment':'off',
     'perfectionist/sort-objects': [
       'error',
       {

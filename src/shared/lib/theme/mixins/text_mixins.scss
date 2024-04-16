@@ -1,0 +1,25 @@
+@mixin title_xl {
+  font-family: 'Noto Sans';
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 30px;
+  color: #212121;
+}
+
+@mixin error_text {
+  font-family: 'Noto Sans';
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 16px;
+  color: #DC0000 !important;
+}
+
+@mixin title_md {
+  font-family: 'Noto Sans';
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 24px;
+  color: #212121;
+}
