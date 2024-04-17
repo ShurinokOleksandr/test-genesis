@@ -1,8 +1,8 @@
 
 .wrapper{
-  z-index: 2;
+  z-index: 2222;
   width: 100%;
-   .button_reset{
+  .button_reset{
     background: transparent;
     border: none;
   }
@@ -11,13 +11,21 @@
     height: 20px ;
   }
   .navigation{
+    position: relative;
+    z-index: 222;
+
     display: flex;
     justify-content: space-between;
+
     margin-bottom: 10px;
     padding: 0;
-   }
+  }
   .progress{
+    position: relative;
+    z-index: 222;
+
     height: 4px;
+
     background: #fff;
     box-shadow: 0px 2px 6px 0px #0000000D;
 

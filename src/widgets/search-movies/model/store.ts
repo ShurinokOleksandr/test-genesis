@@ -42,6 +42,10 @@ class Store {
         }
 
     }
+    resetStore(){
+        this.isFoundMovie = false;
+        this.movie = null;
+    }
     setSearchValue(value:string){
         this.searchValue = value;
     }

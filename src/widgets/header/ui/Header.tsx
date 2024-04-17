@@ -4,35 +4,42 @@ import { ReactComponent as ArrowIcon } from 'src/assets/arrow.svg';
 import { observer } from 'mobx-react-lite';
 import clsx from 'clsx';
 
-import { stepStore } from '../../render-need-component/model/store.ts';
+import { moviesStore } from '../../search-movies/model/store.ts';
+import { stepStore } from '../../render-need-component';
 import cls from './Header.module.scss';
 
 export  const Header = observer(() => {
     console.log(stepStore.step);
     return (
-        <BackgroundImage src='src/assets/header_bg.png' >
+        <BackgroundImage
+            src='src/assets/header_bg.png'
+        >
             <Container className={cls.wrapper} size='responsive'>
-                <Container  mb={15} mt={5}>
+                <Container mb={15} mt={5}>
                     <Container className={cls.navigation}>
                         <ActionIcon
-                            className={clsx(cls.button_back,cls.button_reset)}
-                            onClick={() => stepStore.prevStep()}
+                            onClick={() => {
+                                stepStore.prevStep();
+                                moviesStore.resetStore();
+                            }}
+                            className={clsx(cls.button_back, cls.button_reset)}
                             disabled={stepStore.step === 1}
                             aria-label='Back'
                             variant='default'
                         >
-                            <ArrowIcon opacity={stepStore.step === 1  ?  '10%' : '100%'} />
+                            <ArrowIcon opacity={stepStore.step === 1 ? '10%' : '100%'} />
                         </ActionIcon>
                         <Flex gap={24}>
                             <Text fz={14}>
                                 {stepStore.percentage}%
                             </Text>
-                            <BurgerMenuIcon   />
+                            <BurgerMenuIcon />
                         </Flex>
                     </Container>
-                    <Progress classNames={{ section :cls.progress_value }} value={stepStore.percentage} className={cls.progress}/>
+                    <Progress classNames={{ section: cls.progress_value }} value={stepStore.percentage}
+                        className={cls.progress} />
                 </Container>
-            </Container >
+            </Container>
         </BackgroundImage>
     );
 });

@@ -7,13 +7,11 @@ import { Header } from './widgets';
 
 
 function App() {
-
-
     return (
-        <Box pos='relative' >
-            <Container style={{ zIndex:22 }} size='responsive'>
+        <Box>
+            <Container style={{ zIndex: 22 }} size='responsive'>
                 <Center className={cls.center}>
-                    <Header/>
+                    <Header />
                     <RenderNeedComponent />
                 </Center>
             </Container>
